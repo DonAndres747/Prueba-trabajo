@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Trabajo</title>
+    <link rel="stylesheet" href="estilo.css">
+    
+</head>
+<body>
+    <form action="" class="formulario">
+        <h1 class="titulo">Informacion Pacientes</h1>
+        
+        <label for="" >Numero de Documento</label>  
+        <div class="formulario_list">
+        <select class="list_item1" id="tipoCC">
+            <option>TI</option>
+            <option selected>CC</option>
+            <option>TE</option>
+            <option>PAS</option>
+        </select>
+        <input type="number" class="list_item2" id="CC" required/>    
+        </div>
+        
+        <input type="text"  class="formulario_input" id="nombres" required > 
+        <label for="" class="formulario_label">Nombres</label>
+      
+        <input type="text"  class="formulario_input" id="apellidos" required > 
+        <label for="" class="formulario_label">Apellidos </label>
+
+        <input type="Number"  class="formulario_input" id= "edad" required>
+        <label for="" class="formulario_label">Edad</label>
+
+        <input type="Text" class="formulario_input" id="direccion">
+        <label for="" class="formulario_label">Direccion Residencia</label>
+
+        <select  class="formulario_input" id="sexo">
+            <option>Masculino</option>
+            <option>Fememino</option>
+            <option selected></option>
+        </select> 
+        <label for="" class="formulario_label">Sexo</label>
+
+        
+        <input type="number" id="peso" class="formulario_input" required>
+        <label for="" class="formulario_label">Peso Kilogramos</label>
+
+        <input type="number"  id="estatura" class="formulario_input" required>
+        <label for="" class="formulario_label">Estatura Centimetros</label>
+
+        <label for="" class="formulario_label1">Fuma</label>
+        <div class="formulario_input1" onclick="mostrar()" >            
+            <input type="radio" name="fuma" id="fuma1" value="Si" required >
+            <label for="">Si</label>
+            <input type="radio" name="fuma" id="fuma2" value="No" required>
+            <label for="">No</label>
+        </div>
+   
+        <input type="number"  id="tiempo" class="formulario_fuma" placeholder="Hace cuantos años">
+
+        <label for="" class="formulario_label1" >Maneja dieta alimenticia</label>
+        <div class="formulario_input1">           
+            <input type="radio" name="dieta" id="dieta1" value="Si" >
+            <label for="">Si</label>
+            <input type="radio" name="dieta" id="dieta2"  value="No">
+            <label for="">No</label>
+        </div>
+
+        <input type="submit" value="Guardar" onclick="guardar()" class="formulario_submit"> 
+
+    </form>
+    <script src="index.js"></script>
+</body>
+</html>
