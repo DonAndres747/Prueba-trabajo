@@ -1,4 +1,6 @@
 var inputs = document.getElementsByClassName('formulario_input');
+var infoPac = new Object();
+
 for (var i = 0; i < inputs.length ; i++) {
    
     inputs[i].addEventListener('keyup', function(){
@@ -21,61 +23,75 @@ function mostrar(){
 
 var guardar = function(){
 
-    var tipoCC = document.getElementById("tipoCC").value;
-    var CC = document.getElementById('CC').value;
-    var nombres = document.getElementById('nombres').value;
-    var apellidos = document.getElementById('apellidos').value;
-    var edad = document.getElementById('edad').value;
-    var direccion = document.getElementById('direccion').value;
-    var sexo = document.getElementById("sexo").value;
-    var peso = document.getElementById('peso').value;
-    var estatura = document.getElementById('estatura').value;
-    var prioridad;
-    var riesgo;
-    
+    infoPac.tipoDoc = document.getElementById("tipoDoc").value;
+    infoPac.CC = parseInt(document.getElementById('CC').value);
+    infoPac.nombres = document.getElementById('nombres').value;
+    infoPac.apellidos = document.getElementById('apellidos').value;
+    infoPac.edad = parseInt(document.getElementById('edad').value)
+    infoPac.direccion = document.getElementById('direccion').value;
+    infoPac.sexo = document.getElementById("sexo").value;
+    infoPac.peso = parseInt(document.getElementById('peso').value)
+    infoPac.estatura = parseInt(document.getElementById('estatura').value)
+
     if (document.getElementById("fuma1").checked) {
-        var fuma="Si"
-        var años_de_fumador = document.getElementById("tiempo").value;
+        infoPac.fuma="Si"
+        infoPac.consumoEnAnos = document.getElementById("tiempo").value;
     }else{
-        var fuma="No"
-        var años_de_fumador=null;
+        infoPac.fuma="No"
+        infoPac.consumoEnAnos=00;
     }
     if (document.getElementById("dieta1").checked) {
-        var dieta="Si"
+        infoPac.dieta="Si"
     }else{
-        var dieta="No"
+        infoPac.dieta="No"
     }
-    var relacionPesoEstatura = parseFloat((peso/Math.pow((estatura/100), 2)).toFixed(2));
-    var estadoPaciente="Pendiente"
+    infoPac.relacionPesoEstatura = parseFloat((infoPac.peso/Math.pow((infoPac.estatura/100), 2)).toFixed(2));
+    infoPac.estadoPaciente="Pendiente"
 
-    if(edad>=1 && edad<=5){
-       prioridad= relacionPesoEstatura+3
-    }else if(edad>=6 && edad<=12){
-       prioridad=relacionPesoEstatura+2
-    }else if(edad>=13 && edad<=15){
-        prioridad=relacionPesoEstatura+1
-    }else if(edad>=16 && edad<=40){
-        if(fuma=="Si"){
-            prioridad=(años_de_fumador/4)+2
+    if(infoPac.edad>=1 && infoPac.edad<=5){
+       infoPac.prioridad= infoPac.relacionPesoEstatura+3
+    }else if(infoPac.edad>=6 && infoPac.edad<=12){
+       infoPac.prioridad=infoPac.relacionPesoEstatura+2
+    }else if(infoPac.edad>=13 && infoPac.edad<=15){
+        infoPac.prioridad=infoPac.relacionPesoEstatura+1
+    }else if(infoPac.edad>=16 && infoPac.edad<=40){
+        if(infoPac.fuma=="Si"){
+            infoPac.prioridad=(infoPac.consumoEnAnos/4)+2
         }else{
-            prioridad=2
+            infoPac.prioridad=2
         }
-    }else if(edad>=41){
-        if(dieta=="Si"){
-            if(edad>=60 && edad<=100){
-                prioridad=(edad/20)+4
+    }else if(infoPac.edad>=41){
+        if(infoPac.dieta=="Si"){
+            if(infoPac.edad>=60 && infoPac.edad<=100){
+                infoPac.prioridad=parseFloat((infoPac.edad/20)+4)
+            }else{
+                infoPac.prioridad=parseFloat(((infoPac.edad/30)+3).toFixed(2))
             }
         }else{
-            prioridad=((edad/30)+3).toFixed(3)
+            infoPac.prioridad=parseFloat(((infoPac.edad/30)+3).toFixed(2))
         }
     }
-
-    if(edad>=1 && edad<=40){
-        riesgo=(edad*prioridad)/100
-    }else if(edad>=41){
-        riesgo=((edad*prioridad)/100)+5.3
+    console.log(infoPac.edad);
+    if(infoPac.edad>=1 && infoPac.edad<=40){
+        infoPac.riesgo=(infoPac.edad*infoPac.prioridad)/100
+    }else if(infoPac.edad>=41){
+        infoPac.riesgo=((infoPac.edad*infoPac.prioridad)/100)+5.3
     }
 
-    console.log(tipoCC+" "+CC+" "+nombres+" "+apellidos+" "+edad+" "+direccion+" "+sexo+" "+peso+" "+estatura+" "+fuma+" Consumo en años:"+años_de_fumador+
-    " "+dieta+" RelacionPE: "+relacionPesoEstatura+" "+estadoPaciente+" prioridad="+prioridad+" riesgo:"+riesgo);
+    console.log(infoPac);
+    enviar();
 }   
+
+var enviar= function(){
+    fetch('http://127.0.0.1:5000/guardar',{ 
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(infoPac),
+        headers:{
+            "Content-type": "application/json"
+        }
+    })
+        .then(res => res.json)
+        .then(res2 => console.log(res2.status));
+
+}

@@ -103,3 +103,14 @@ body {
 .fijar{
     margin-top: -92px;
 }
+
+.button{
+    background-color:rgb(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 5px;
+    display: block;
+    width: 10%;
+    position: absolute;
+    left: 45%;
+    padding: 0.5%;
+}
