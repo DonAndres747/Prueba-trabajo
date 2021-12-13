@@ -9,7 +9,6 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1234@localhost/dbpacientes'
 
@@ -119,7 +118,7 @@ def menor():
      
     paciente_menor = Pacientes.query.filter_by(Estado="Pendiente").order_by(Pacientes.Edad.asc()).first() 
 
-    return jsonify(paciente_menor.TipoDoc, paciente_menor.Id, paciente_menor.Nombres)
+    return jsonify(Doc = paciente_menor.TipoDoc, Id=paciente_menor.Id, Nombre= paciente_menor.Nombres)
 
 
 @app.route('/mayor')

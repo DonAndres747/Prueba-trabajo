@@ -113,4 +113,34 @@ body {
     position: absolute;
     left: 45%;
     padding: 0.5%;
+    font-size: 1.3em
+}
+
+
+/*       tablas      */
+
+table thead{
+    background-color: #302b63;
+    color: white;
+}
+
+.riesgo{
+    color: red;
+}
+
+.prioridad{
+    color:darkorange;
+}
+
+.fumador{
+    background-color:#302b63;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    display: block;
+    width: 20%;
+    position: absolute;
+    left: 15%;
+    padding: 0.5%;
+    font-size: 0.991em
 }
