@@ -49,7 +49,7 @@ CREATE TABLE `pacientes` (
 
 LOCK TABLES `pacientes` WRITE;
 /*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
-INSERT INTO `pacientes` VALUES ('TI',86123,'carlita','Telles Telles ',7,'cr falsa # 51-18','Fememino',45,110,'No',0,'No',37.19,'Pendiente',39,3),('TE',4632178,'lula','lila',54,'cra 2 #5-12','Fememino',50,150,'No',0,'Si',22.22,'Pendiente',5,8),('TE',465879655,'Bob','Bed',21,'cr falsa # 51-18','Fememino',70,180,'Si',5,'Si',21.6,'Pendiente',3,1),('CC',1032465987,'Carl','Telles Telles ',60,'cr falsa # 51-18','Masculino',55,166,'Si',12,'No',19.96,'Pendiente',5,8),('CC',2013646818,'Carla','Telles Telles ',60,'cr falsa # 51-18','Fememino',40,155,'No',0,'Si',16.65,'Pendiente',7,10);
+INSERT INTO `pacientes` VALUES ('TI',86123,'carlita','Telles Telles ',7,'cr falsa # 51-18','Fememino',45,110,'No',0,'No',37.19,'Pendiente',39,3),('TE',4632178,'lula','lila',54,'cra 2 #5-12','Fememino',50,150,'No',0,'Si',22.22,'Pendiente',5,8),('TE',465879655,'Bob','Bed',21,'cr falsa # 51-18','Fememino',70,180,'Si',5,'Si',21.6,'Pendiente',3,1),('CC',1032465987,'Carl','Telles Telles ',60,'cr falsa # 51-18','Masculino',55,166,'Si',12,'No',19.96,'Atendido',5,8),('CC',2013646818,'Carla','Telles Telles ',60,'cr falsa # 51-18','Fememino',40,155,'No',0,'Si',16.65,'Pendiente',7,10);
 /*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
