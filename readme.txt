@@ -14,6 +14,7 @@ ejecutar los comandos
 python get-pip.py
 npm install bootstrap 
 py -m pip install virtualenv 
+py -m virtualenv env
 py -m pip install -r requirements.txt
 .\env\Scripts\activate
 py .\src\app.py
