@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
 from sqlalchemy import desc, asc
@@ -8,11 +8,14 @@ import json
 
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:1234@localhost/dbpacientes'
 
 db = SQLAlchemy(app)
+
+
 
 @dataclass
 class Pacientes(db.Model):
@@ -42,6 +45,7 @@ class Pacientes(db.Model):
 
 
 @app.route('/listar/riesgo')
+@cross_origin()
 def listar_riesgo():
      
     lista_pacientes = []
@@ -54,6 +58,7 @@ def listar_riesgo():
 
 
 @app.route('/listar/prioridad')
+@cross_origin()
 def listar_prioridad():
      
     lista_pacientes = []
@@ -65,6 +70,7 @@ def listar_prioridad():
     return jsonify(lista_pacientes)
 
 @app.route('/guardar',  methods=['POST'])
+@cross_origin()
 def guardar():
     #my_request = request.get_json()
     my_request = request.data.decode("UTF-8")
@@ -95,6 +101,7 @@ def guardar():
 
 
 @app.route('/actualizar', methods=['PUT'])
+@cross_origin()
 def actualizar():
     
     my_request = request.get_json()
@@ -106,6 +113,7 @@ def actualizar():
 
 
 @app.route('/fumador')
+@cross_origin()
 def fumador():
      
     fumador_riesgoso = Pacientes.query.filter_by(Estado="Pendiente" , Fuma="Si").order_by(Pacientes.Prioridad.desc()).first() 
@@ -114,6 +122,7 @@ def fumador():
 
   
 @app.route('/menor')
+@cross_origin()
 def menor():
      
     paciente_menor = Pacientes.query.filter_by(Estado="Pendiente").order_by(Pacientes.Edad.asc()).first() 
@@ -122,6 +131,7 @@ def menor():
 
 
 @app.route('/mayor')
+@cross_origin()
 def mayor():
      
     paciente_mayor = Pacientes.query.filter_by(Estado="Pendiente").order_by(Pacientes.Edad.desc()).first() 
