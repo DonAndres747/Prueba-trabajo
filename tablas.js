@@ -33,7 +33,7 @@ const mostrarDatos = (data) => {
         <td>${data[i].Edad}</td><td>${data[i].Sexo}</td><td>${data[i].Fuma}</td><td>${data[i].ConsumoEnAnos}</td><td>${data[i].Dieta}</td>
         <td style="color:red">${data[i].Riesgo}</td>
         
-        <td style="color:red"><input type="button" onClick="enviar(${data[i].Id})" value="Atender"></td></tr>`
+        <td style="color:red"><input type="button" onClick="${enviar(data[i].Id)}" value="Atender"></td></tr>`
     }
 
     document.getElementById('data').innerHTML = body 
@@ -54,7 +54,7 @@ const mostrarDatos2 = (data) => {
         <td>${data[i].Edad}</td><td>${data[i].Sexo}</td><td>${data[i].Fuma}</td><td>${data[i].ConsumoEnAnos}</td><td>${data[i].Dieta}</td>
         <td style="color:darkorange">${data[i].Prioridad}</td>
         
-        <td style="color:red"><input type="button" onClick="enviar(${data[i].Id})" value="Atender"></td></tr>`
+        <td style="color:red"><input type="button" onClick="${enviar(data[i].Id)}" value="Atender"></td></tr>`
 
     }
 
