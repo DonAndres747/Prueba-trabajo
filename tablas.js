@@ -75,3 +75,29 @@ fetch(url_fumador)
 }) 
 
 
+const menorPaciente = document.querySelector('.menor')
+
+const url_menor= 'http://127.0.0.1:5000/menor'
+
+fetch(url_menor)
+.then(res => res.json())
+.then(data => {
+    const p = document.createElement('p')
+    p.innerHTML= "Paciente Menor : "+data
+    menorPaciente.appendChild(p)
+    console.log(data)
+}) 
+
+const mayorPaciente = document.querySelector('.mayor')
+
+const url_mayor= 'http://127.0.0.1:5000/mayor'
+
+fetch(url_mayor)
+.then(res => res.json())
+.then(data => {
+    const p = document.createElement('p')
+    p.innerHTML= "Paciente Mayor : "+data
+    mayorPaciente.appendChild(p)
+    console.log(data)
+}) 
+

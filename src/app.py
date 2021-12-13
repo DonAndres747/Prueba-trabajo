@@ -109,8 +109,8 @@ def actualizar():
 def fumador():
      
     fumador_riesgoso = Pacientes.query.filter_by(Estado="Pendiente" , Fuma="Si").order_by(Pacientes.Prioridad.desc()).first() 
-
-    return jsonify(fumador_riesgoso.TipoDoc, fumador_riesgoso.Id, fumador_riesgoso.Nombres)
+    
+    return jsonify(fumador_riesgoso.TipoDoc, fumador_riesgoso.Id , fumador_riesgoso.Nombres, fumador_riesgoso.Prioridad)
 
   
 @app.route('/menor')
@@ -118,7 +118,7 @@ def menor():
      
     paciente_menor = Pacientes.query.filter_by(Estado="Pendiente").order_by(Pacientes.Edad.asc()).first() 
 
-    return jsonify(Doc = paciente_menor.TipoDoc, Id=paciente_menor.Id, Nombre= paciente_menor.Nombres)
+    return jsonify(paciente_menor.TipoDoc, paciente_menor.Id, paciente_menor.Nombres, paciente_menor.Edad)
 
 
 @app.route('/mayor')
@@ -126,7 +126,7 @@ def mayor():
      
     paciente_mayor = Pacientes.query.filter_by(Estado="Pendiente").order_by(Pacientes.Edad.desc()).first() 
 
-    return jsonify(paciente_mayor.TipoDoc, paciente_mayor.Id, paciente_mayor.Nombres)
+    return jsonify(paciente_mayor.TipoDoc, paciente_mayor.Id, paciente_mayor.Nombres, paciente_mayor.Edad)
 
 
 
