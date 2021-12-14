@@ -20,7 +20,7 @@
 CREATE DATABASE dbpacientes;
 
 USE	dbpacientes;
---
+--s
 
 DROP TABLE IF EXISTS `pacientes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

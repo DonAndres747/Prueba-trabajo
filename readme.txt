@@ -11,12 +11,36 @@ que esta ubicado en la carpeta script
 
 ejecutar los comandos 
 
-python get-pip.py
 npm install bootstrap 
 py -m pip install virtualenv 
 py -m virtualenv env
-py -m pip install -r requirements.txt
+
+
+luego de esto se abre el powershell de windows en modo administrador y se ejecutan los comandos
+
+Set-ExecutionPolicy -Scope LocalMachine unrestricted
+se escribe si cuando lo pregunte
+
+Set-ExecutionPolicy -Scope CurrentUser unrestricted
+se escribe si cuando lo pregunte
+
+y luego se comprobara ejecutando el siguente comando en el terminal de visual
+Get-ExecutionPolicy -list
+
+y esto tiene que mostrar algo tal que asi
+
+        Scope ExecutionPolicy
+        ----- ---------------
+MachinePolicy       Undefined
+   UserPolicy       Undefined
+      Process       Undefined
+  CurrentUser    Unrestricted
+ LocalMachine       Undefined
+
+y ahora ejecutar
+
 .\env\Scripts\activate
+py -m pip install -r requirements.txt
 py .\src\app.py
 
 
