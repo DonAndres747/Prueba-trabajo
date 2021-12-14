@@ -31,7 +31,7 @@ const mostrarDatos = (data) => {
     for(let i = 0; i<data.length; i++){
         body += `<tr><td>${data[i].TipoDoc}</td><td>${data[i].Id}</td><td>${data[i].Nombres}<td>${data[i].Apellidos}</td></td>
         <td>${data[i].Edad}</td><td>${data[i].Sexo}</td><td>${data[i].Fuma}</td><td>${data[i].ConsumoEnAnos}</td><td>${data[i].Dieta}</td>
-        <td style="color:red">${data[i].Riesgo}</td>
+        <td>${data[i].RelacionPE}</td><td style="color:red">${data[i].Riesgo}</td>
         
         <td style="color:red"><input type="button" onClick="${enviar(data[i].Id)}" value="Atender"></td></tr>`
     }
@@ -52,7 +52,7 @@ const mostrarDatos2 = (data) => {
     for(let i = 0; i<data.length; i++){
         body += `<tr><td>${data[i].TipoDoc}</td><td>${data[i].Id}</td><td>${data[i].Nombres}<td>${data[i].Apellidos}</td></td>
         <td>${data[i].Edad}</td><td>${data[i].Sexo}</td><td>${data[i].Fuma}</td><td>${data[i].ConsumoEnAnos}</td><td>${data[i].Dieta}</td>
-        <td style="color:darkorange">${data[i].Prioridad}</td>
+        <td>${data[i].RelacionPE}</td><td style="color:darkorange">${data[i].Prioridad}</td>
         
         <td style="color:red"><input type="button" onClick="${enviar(data[i].Id)}" value="Atender"></td></tr>`
 
