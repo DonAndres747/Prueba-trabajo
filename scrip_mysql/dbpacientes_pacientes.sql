@@ -17,6 +17,9 @@
 
 --
 -- Table structure for table `pacientes`
+CREATE DATABASE dbpacientes;
+
+USE	dbpacientes;
 --
 
 DROP TABLE IF EXISTS `pacientes`;
